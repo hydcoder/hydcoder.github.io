@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,手机通讯录,字母A-Z排序,SideBar," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hydcoder's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1、前言最近在做公司项目的时候遇到一个添加手机联系人的需求，主要有以下几个功能点：  读取联系人：读取用户手机上的通讯录里的联系人列表 好友排序：按照拼音顺序对好友进行排序，兼容英文数字符号等 字母索引：右侧字母导航条，既可拖动也可点击，联动ListView滑动 匹配：最后要将通讯录里的联系人列表与后台数据库里的用户表进行匹配  最终的大致效果如下：  特意写篇博客将整个实现过程记录下来，方便以">
+<meta name="keywords" content="Android,手机通讯录,字母A-Z排序,SideBar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取手机联系人匹配用户表并按字母A-Z排序展示">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/获取手机联系人匹配用户表并按字母A-Z排序展示/index.html">
+<meta property="og:site_name" content="hydcoder&#39;s blog">
+<meta property="og:description" content="1、前言最近在做公司项目的时候遇到一个添加手机联系人的需求，主要有以下几个功能点：  读取联系人：读取用户手机上的通讯录里的联系人列表 好友排序：按照拼音顺序对好友进行排序，兼容英文数字符号等 字母索引：右侧字母导航条，既可拖动也可点击，联动ListView滑动 匹配：最后要将通讯录里的联系人列表与后台数据库里的用户表进行匹配  最终的大致效果如下：  特意写篇博客将整个实现过程记录下来，方便以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/ODZiWJD.gif">
+<meta property="og:updated_time" content="2017-10-11T10:37:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取手机联系人匹配用户表并按字母A-Z排序展示">
+<meta name="twitter:description" content="1、前言最近在做公司项目的时候遇到一个添加手机联系人的需求，主要有以下几个功能点：  读取联系人：读取用户手机上的通讯录里的联系人列表 好友排序：按照拼音顺序对好友进行排序，兼容英文数字符号等 字母索引：右侧字母导航条，既可拖动也可点击，联动ListView滑动 匹配：最后要将通讯录里的联系人列表与后台数据库里的用户表进行匹配  最终的大致效果如下：  特意写篇博客将整个实现过程记录下来，方便以">
+<meta name="twitter:image" content="https://i.imgur.com/ODZiWJD.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'SL4D52I9T2',
+      apiKey: '0badc1227cda130fdb8d0651226997cb',
+      indexName: 'hydcoder',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 「${query}」 相关的内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/获取手机联系人匹配用户表并按字母A-Z排序展示/"/>
+
+
+
+
+
+  <title>获取手机联系人匹配用户表并按字母A-Z排序展示 | hydcoder's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hydcoder's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱好游戏和摄影的码农</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <!-- 添加  theme.algolia_search.enable -->
+  
+
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/ || tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+
+
+  
+    <li class="menu-item menu-item-search">
+      
+        <a href="javascript:;" class="popup-trigger">
+
+<!-- 添加 开始 -->
+
+
+      
+        
+        搜索
+      </a>
+    </li>
+  
+</ul>
+
+  
+
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/获取手机联系人匹配用户表并按字母A-Z排序展示/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hydCoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=493654134&s=5">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hydcoder's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">获取手机联系人匹配用户表并按字母A-Z排序展示</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T17:55:07+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/11/获取手机联系人匹配用户表并按字母A-Z排序展示/" class="leancloud_visitors" data-flag-title="获取手机联系人匹配用户表并按字母A-Z排序展示">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc -->
+<h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>最近在做公司项目的时候遇到一个添加手机联系人的需求，主要有以下几个功能点：</p>
+<ul>
+<li>读取联系人：读取用户手机上的通讯录里的联系人列表</li>
+<li>好友排序：按照拼音顺序对好友进行排序，兼容英文数字符号等</li>
+<li>字母索引：右侧字母导航条，既可拖动也可点击，联动ListView滑动</li>
+<li>匹配：最后要将通讯录里的联系人列表与后台数据库里的用户表进行匹配</li>
+</ul>
+<p>最终的大致效果如下：</p>
+<p><img src="https://i.imgur.com/ODZiWJD.gif" alt=""></p>
+<p>特意写篇博客将整个实现过程记录下来，方便以后再次遇到这样的需求的时候可以直接使用CV大法，也希望能帮到刚好有这方面需求的朋友。</p>
+<!-- toc -->
+<h2 id="2、读取联系人"><a href="#2、读取联系人" class="headerlink" title="2、读取联系人"></a>2、读取联系人</h2><p>读取手机通讯录里的联系人主要是通过ContentResolver 来获取的，代码比较固定，直接贴代码：</p>
+<p>先定义一个用来接收联系人的数据bean，主要是对id，name和phone三个字段进行赋值，其他字段主要是为了排序和匹配用户表用到的。</p>
+<pre><code>/**
+ * @author hydCoder
+ * @date 2017/10/11 10:50
+ * @desc 手机联系人的数据bean
+ * @email hyd_coder@163.com
+ */
+
+public class ContactInfo implements Comparable&lt;ContactInfo&gt; {
+    public String id;
+    public String name;
+    public String phone;
+    public String pinyin; // 姓名对应的拼音
+    public String firstLetter; // 拼音的首字母
+    public String userAvatar;
+    public String userName;
+    public String userNick;
+    public int    isFriend;
+    public String userId;
+    public int gradeLevel;
+    public String userPosition;
+    public String userCompany;
+    public int userType;
+    public boolean isUser = false;
+
+    public ContactInfo(String id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        pinyin = Cn2Spell.getPinYin(name); // 根据姓名获取拼音
+        firstLetter = pinyin.substring(0, 1).toUpperCase(); // 获取拼音首字母并转成大写
+        if (!firstLetter.matches(&quot;[A-Z]&quot;)) { // 如果不在A-Z中则默认为“#”
+            firstLetter = &quot;#&quot;;
+        }
+    }
+
+    @Override
+    public int compareTo(@NonNull ContactInfo another) {
+        if (firstLetter.equals(&quot;#&quot;) &amp;&amp; !another.firstLetter.equals(&quot;#&quot;)) {
+            return 1;
+        } else if (!firstLetter.equals(&quot;#&quot;) &amp;&amp; another.firstLetter.equals(&quot;#&quot;)){
+            return -1;
+        } else {
+            return pinyin.compareToIgnoreCase(another.pinyin);
+        }
+    }
+}
+</code></pre><p>获取联系人数据的工具类：</p>
+<pre><code>    /**
+ * @author hydCoder
+ * @date 2017/10/11 10:53
+ * @desc 获取手机联系人数据
+ * @email hyd_coder@163.com
+ */
+
+public class ContactUtils {
+    /**
+     * 获取联系人数据
+     *
+     * @param context
+     * @return
+     */
+    public static List&lt;ContactInfo&gt; getAllContacts(Context context) {
+        List&lt;ContactInfo&gt; list = new ArrayList&lt;&gt;();
+        // 获取解析者
+        ContentResolver resolver = context.getContentResolver();
+        // 访问地址
+        Uri raw_contacts = Uri.parse(&quot;content://com.android.contacts/raw_contacts&quot;);
+        Uri data = Uri.parse(&quot;content://com.android.contacts/data&quot;);
+        // 查询语句
+        // select contact_id from raw_contacts;//1 2 3 4
+        // select mimetype,data1 from view_data where raw_contact_id=3;
+        // Cursor cursor=resolver.query(访问地址, 返回字段 null代表全部, where 语句, 参数, 排序)
+        Cursor cursor = resolver.query(raw_contacts, new String[] { &quot;contact_id&quot; }, null, null, null);
+
+        while (cursor.moveToNext()) {
+            // getColumnIndex根据名称查列号
+            String id = cursor.getString(cursor.getColumnIndex(&quot;contact_id&quot;));
+            // 创建实例
+            String name = &quot;&quot;;
+            String phone = &quot;&quot;;
+            Cursor item = resolver.query(data, new String[] { &quot;mimetype&quot;, &quot;data1&quot; }, &quot;raw_contact_id=?&quot;, new String[] { id }, null);
+
+            while (item.moveToNext()) {
+                String mimetype = item.getString(item.getColumnIndex(&quot;mimetype&quot;));
+                String data1 = item.getString(item.getColumnIndex(&quot;data1&quot;));
+                if (&quot;vnd.android.cursor.item/name&quot;.equals(mimetype)) {
+                    name = data1;
+                } else if (&quot;vnd.android.cursor.item/phone_v2&quot;.equals(mimetype)) {
+                    // 有的手机号中间会带有空格
+                    phone = data1.replace(&quot; &quot;,&quot;&quot;);
+                }
+            }
+            ContactInfo info = new ContactInfo(id,name,phone);
+            item.close();
+            // 添加集合
+            list.add(info);
+        }
+
+        cursor.close();
+        return list;
+    }
+}
+</code></pre><!-- toc -->
+<h2 id="3、好友排序和字母索引"><a href="#3、好友排序和字母索引" class="headerlink" title="3、好友排序和字母索引"></a>3、好友排序和字母索引</h2><!-- toc -->
+<h3 id="3-1、右侧字母索引的导航条–SideBar"><a href="#3-1、右侧字母索引的导航条–SideBar" class="headerlink" title="3.1、右侧字母索引的导航条–SideBar"></a>3.1、右侧字母索引的导航条–SideBar</h3><p>这个可以在网上找到很多类似的，你也可以找一个自己喜欢的甚至自己写一个出来，我在项目里用的是这个</p>
+<p><a href="https://github.com/AlexLiuSheng/AnimSideBar" target="_blank" rel="noopener">https://github.com/AlexLiuSheng/AnimSideBar</a></p>
+<p>我把他的<strong>SideBar.java</strong>拷贝到项目里，修改了部分代码：</p>
+<pre><code>    public class SideBar extends TextView {
+    private String[] letters = new String[]{&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;,
+            &quot;J&quot;, &quot;K&quot;, &quot;L&quot;, &quot;M&quot;, &quot;N&quot;, &quot;O&quot;, &quot;P&quot;, &quot;Q&quot;, &quot;R&quot;, &quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;,
+            &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;, &quot;#&quot;};
+    private Paint textPaint;
+    private Paint bigTextPaint;
+    private Paint scaleTextPaint;
+
+    private Canvas canvas;
+    private int    itemH;
+    private int    w;
+    private int    h;
+    /**
+     * 普通情况下字体大小
+     */
+    float singleTextH;
+    /**
+     * 缩放离原始的宽度
+     */
+    private float scaleWidth;
+    /**
+     * 滑动的Y
+     */
+    private float eventY = 0;
+    /**
+     * 缩放的倍数
+     */
+    private int scaleSize = 1;
+    /**
+     * 缩放个数item，即开口大小
+     */
+    private int scaleItemCount = 6;
+    private ISideBarSelectCallBack callBack;
+
+    public SideBar(Context context) {
+        this(context, null);
+    }
+
+    public SideBar(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public SideBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(attrs);
+    }
+
+    private void init(AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.SideBar);
+            scaleSize = ta.getInteger(R.styleable.SideBar_scaleSize, 1);
+            scaleItemCount = ta.getInteger(R.styleable.SideBar_scaleItemCount, 6);
+            scaleWidth = ta.getDimensionPixelSize(R.styleable.SideBar_scaleWidth, dp(100));
+            ta.recycle();
+        }
+        textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        textPaint.setColor(getCurrentTextColor());
+        textPaint.setTextSize(getTextSize());
+        textPaint.setTextAlign(Paint.Align.CENTER);
+        bigTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        bigTextPaint.setColor(getCurrentTextColor());
+        bigTextPaint.setTextSize(getTextSize() * (scaleSize + 3));
+        bigTextPaint.setTextAlign(Paint.Align.CENTER);
+        scaleTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        scaleTextPaint.setColor(getCurrentTextColor());
+        scaleTextPaint.setTextSize(getTextSize() * (scaleSize + 1));
+        scaleTextPaint.setTextAlign(Paint.Align.CENTER);
+    }
+
+    public void setDataResource(String[] data) {
+        letters = data;
+        invalidate();
+    }
+
+    public void setOnStrSelectCallBack(ISideBarSelectCallBack callBack) {
+        this.callBack = callBack;
+    }
+
+    /**
+     * 设置字体缩放比例
+     *
+     * @param scale
+     */
+    public void setScaleSize(int scale) {
+        scaleSize = scale;
+        invalidate();
+    }
+
+    /**
+     * 设置缩放字体的个数，即开口大小
+     *
+     * @param scaleItemCount
+     */
+    public void setScaleItemCount(int scaleItemCount) {
+        this.scaleItemCount = scaleItemCount;
+        invalidate();
+    }
+
+    private int dp(int px) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (px * scale + 0.5f);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                if (event.getX() &gt; (w - getPaddingRight() - singleTextH - 10)) {
+                    eventY = event.getY();
+                    invalidate();
+                    return true;
+                } else {
+                    eventY = 0;
+                    invalidate();
+                    break;
+                }
+            case MotionEvent.ACTION_CANCEL:
+                eventY = 0;
+                invalidate();
+                return true;
+            case MotionEvent.ACTION_UP:
+                if (event.getX() &gt; (w - getPaddingRight() - singleTextH - 10)) {
+                    eventY = 0;
+                    invalidate();
+                    return true;
+                } else
+                    break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        this.canvas = canvas;
+        DrawView(eventY);
+    }
+
+    private void DrawView(float y) {
+        int currentSelectIndex = -1;
+        if (y != 0) {
+            for (int i = 0; i &lt; letters.length; i++) {
+                float currentItemY = itemH * i;
+                float nextItemY = itemH * (i + 1);
+                if (y &gt;= currentItemY &amp;&amp; y &lt; nextItemY) {
+                    currentSelectIndex = i;
+                    if (callBack != null) {
+                        callBack.onSelectStr(currentSelectIndex, letters[i]);
+                    }
+                    //画大的字母
+                    Paint.FontMetrics fontMetrics = bigTextPaint.getFontMetrics();
+                    float bigTextSize = fontMetrics.descent - fontMetrics.ascent;
+                    canvas.drawText(letters[i], w - getPaddingRight() - scaleWidth - bigTextSize, singleTextH + itemH * i, bigTextPaint);
+                }
+            }
+        }
+        drawLetters(y, currentSelectIndex);
+    }
+
+    private void drawLetters(float y, int index) {
+        //第一次进来没有缩放情况，默认画原图
+        if (index == -1) {
+            w = getMeasuredWidth();
+            h = getMeasuredHeight();
+            itemH = h / letters.length;
+            Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+            singleTextH = fontMetrics.descent - fontMetrics.ascent;
+            for (int i = 0; i &lt; letters.length; i++) {
+                canvas.drawText(letters[i], w - getPaddingRight(), singleTextH + itemH * i, textPaint);
+            }
+            //触摸的时候画缩放图
+        } else {
+            //遍历所有字母
+            for (int i = 0; i &lt; letters.length; i++) {
+                //要画的字母的起始Y坐标
+                float currentItemToDrawY = singleTextH + itemH * i;
+                float centerItemToDrawY;
+                if (index &lt; i)
+                    centerItemToDrawY = singleTextH + itemH * (index + scaleItemCount);
+                else
+                    centerItemToDrawY = singleTextH + itemH * (index - scaleItemCount);
+                float delta = 1 - Math.abs((y - currentItemToDrawY) / (centerItemToDrawY - currentItemToDrawY));
+                float maxRightX = w - getPaddingRight();
+                //如果大于0，表明在y坐标上方
+                scaleTextPaint.setTextSize(getTextSize() + getTextSize() * delta);
+                float drawX = maxRightX - scaleWidth * delta;
+                //超出边界直接花在边界上
+                if (drawX &gt; maxRightX)
+                    canvas.drawText(letters[i], maxRightX, singleTextH + itemH * i, textPaint);
+                else
+                    canvas.drawText(letters[i], drawX, singleTextH + itemH * i, scaleTextPaint);
+            }
+        }
+    }
+
+    public interface ISideBarSelectCallBack {
+        void onSelectStr(int index, String selectStr);
+    }
+
+}
+</code></pre><p>其中3个自定义的属性如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  
+&lt;resources&gt;  
+    &lt;declare-styleable name=&quot;SideBar&quot;&gt;  
+        &lt;attr name=&quot;scaleSize&quot; format=&quot;integer&quot;/&gt;  
+        &lt;attr name=&quot;scaleItemCount&quot; format=&quot;integer&quot;/&gt;  
+        &lt;attr name=&quot;scaleWidth&quot; format=&quot;dimension&quot;/&gt;  
+    &lt;/declare-styleable&gt;  
+&lt;/resources&gt;  
+</code></pre><!-- toc -->
+<h3 id="3-2、汉字转拼音工具类"><a href="#3-2、汉字转拼音工具类" class="headerlink" title="3.2、汉字转拼音工具类"></a>3.2、汉字转拼音工具类</h3><p>比较尴尬的是，java中是没有提供接口和方法让我们直接将汉字转成拼音的。所以我们只能自己想办法了，一般有以下两种办法：</p>
+<p><strong>1、 使用第三方pinyin4j的jar包 </strong> <a href="http://central.maven.org/maven2/com/belerweb/pinyin4j/2.5.0/pinyin4j-2.5.0-sources.jar" target="_blank" rel="noopener">下载地址</a><br>Android Studio也可直接依赖 </p>
+<pre><code>compile &apos;com.belerweb:pinyin4j:2.5.0&apos;
+</code></pre><p>优点：使用简单，实用性好<br>缺点：需要依赖第三方jar包</p>
+<p><strong>2、 使用ASCII码和拼音的映射</strong></p>
+<p>优点：零依赖，只有一个Class，使用简单<br>缺点：只支持常见的一级汉字，对于一些不常见的汉字（亳bo）则无法正确获取拼音<br>（中文编码中一级汉字是按拼音排序的，容易映射。而二级汉字是按笔画部首排序的）</p>
+<blockquote>
+<p>其实，无论是使用哪种方法，我发现都是没有去处理多音字的情况（毕竟这个真不好写），不过基本需求都可以满足啦。</p>
+</blockquote>
+<p>我在这里直接使用的就是pinyin4j的jar包。但我还是基于pinyin4j写了个转换的工具类：</p>
+<pre><code>    /** 
+ * 汉字转换位汉语拼音，英文字符不变 
+ */  
+public class Cn2Spell {  
+
+    public static StringBuffer sb = new StringBuffer();  
+
+    /** 
+     * 获取汉字字符串的首字母，英文字符不变 
+     * 例如：阿飞→af 
+     */  
+    public static String getPinYinHeadChar(String chines) {  
+        sb.setLength(0);  
+        char[] chars = chines.toCharArray();  
+        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();  
+        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);  
+        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);  
+        for (int i = 0; i &lt; chars.length; i++) {  
+            if (chars[i] &gt; 128) {  
+                try {  
+                    sb.append(PinyinHelper.toHanyuPinyinStringArray(chars[i], defaultFormat)[0].charAt(0));  
+                } catch (Exception e) {  
+                    e.printStackTrace();  
+                }  
+            } else {  
+                sb.append(chars[i]);  
+            }  
+        }  
+        return sb.toString();  
+    }  
+
+    /** 
+     * 获取汉字字符串的第一个字母 
+     */  
+    public static String getPinYinFirstLetter(String str) {  
+        sb.setLength(0);  
+        char c = str.charAt(0);  
+        String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(c);  
+        if (pinyinArray != null) {  
+            sb.append(pinyinArray[0].charAt(0));  
+        } else {  
+            sb.append(c);  
+        }  
+        return sb.toString();  
+    }  
+
+    /** 
+     * 获取汉字字符串的汉语拼音，英文字符不变 
+     */  
+    public static String getPinYin(String chines) {  
+        sb.setLength(0);  
+        char[] nameChar = chines.toCharArray();  
+        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();  
+        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);  
+        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);  
+        for (int i = 0; i &lt; nameChar.length; i++) {  
+            if (nameChar[i] &gt; 128) {  
+                try {  
+                    sb.append(PinyinHelper.toHanyuPinyinStringArray(nameChar[i], defaultFormat)[0]);  
+                } catch (Exception e) {  
+                    e.printStackTrace();  
+                }  
+            } else {  
+                sb.append(nameChar[i]);  
+            }  
+        }  
+        return sb.toString();  
+    }  
+
+}  
+</code></pre><!-- toc -->
+<h3 id="3-3、让联系人可以根据拼音来排序"><a href="#3-3、让联系人可以根据拼音来排序" class="headerlink" title="3.3、让联系人可以根据拼音来排序"></a>3.3、让联系人可以根据拼音来排序</h3><p>代码在上面已经贴过了，这里就不重复贴了，其实就是让JavaBean实现<strong>comparable</strong>接口，并重写<strong>comparaT</strong>o方法。再在<strong>comparaTo</strong>方法里根据首字母判断，首字母为“#”都放在最后，都为“#”或者都是字母时才根据拼音来比较排序。</p>
+<!-- toc -->
+<h2 id="4、与后台数据库进行匹配"><a href="#4、与后台数据库进行匹配" class="headerlink" title="4、与后台数据库进行匹配"></a>4、与后台数据库进行匹配</h2><p>我与我们后台的开发大佬商量好的是将获取到的联系人集合里的手机号用”,”连接起来传给他，他再将匹配到的联系人数据返回给我，我再进行数据整合并处理交互逻辑。代码比较简单，这里就不贴了。</p>
+<!-- toc -->
+<h2 id="5、组装"><a href="#5、组装" class="headerlink" title="5、组装"></a>5、组装</h2><p>由于没有把这个单独抽出来，所以只能贴部分关键代码。。。。。。</p>
+<p>Activity的布局文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+              xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+              android:orientation=&quot;vertical&quot;
+              android:layout_width=&quot;match_parent&quot;
+              android:layout_height=&quot;match_parent&quot;
+              android:background=&quot;@color/gray_e5e5e5&quot;&gt;
+
+    &lt;com.sdalolo.genius.utils.CustomNavigatorBar
+        android:id=&quot;@+id/cn_bar&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;@dimen/title_bar_size&quot;
+        android:paddingRight=&quot;10dp&quot;
+        android:layout_alignParentTop=&quot;true&quot;
+        app:leftImage=&quot;@drawable/backtrack&quot;
+        app:leftImageVisiable=&quot;true&quot;
+        app:leftTextVisibale=&quot;false&quot;
+        app:midText=&quot;添加手机联系人&quot;
+        app:midTextFontSize=&quot;@dimen/title_size&quot;
+        app:midTextFontColor=&quot;@color/auxiliary_color&quot;
+        app:rightTextVisible=&quot;false&quot;
+        app:rightImageVisible=&quot;false&quot;
+        app:titleBarBackground=&quot;@color/main_color&quot;&gt;
+    &lt;/com.sdalolo.genius.utils.CustomNavigatorBar&gt;
+
+    &lt;ListView
+        android:id=&quot;@+id/list_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_below=&quot;@+id/cn_bar&quot;
+        android:divider=&quot;@color/divide_color&quot;
+        android:scrollbars=&quot;none&quot;
+        android:dividerHeight=&quot;1dp&quot;&gt;
+    &lt;/ListView&gt;
+
+    &lt;com.sdalolo.genius.ui.view.SideBar
+        android:id=&quot;@+id/side_bar&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_below=&quot;@+id/cn_bar&quot;
+        android:layout_alignParentRight=&quot;true&quot;
+        android:paddingRight=&quot;10dp&quot;
+        android:textColor=&quot;@color/auxiliary_color&quot;
+        android:textSize=&quot;14sp&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre><p>activity中的部分代码：</p>
+<pre><code>mSideBar.setOnStrSelectCallBack(new SideBar.ISideBarSelectCallBack() {
+        @Override
+        public void onSelectStr(int index, String selectStr) {
+            if (mAllContacts != null) {
+                for (int i = 0; i &lt; mAllContacts.size(); i++) {
+                    if (selectStr.equalsIgnoreCase(mAllContacts.get(i).firstLetter)) {
+                        mListView.setSelection(i); // 选择到首字母出现的位置
+                        return;
+                    }
+                }
+            }
+        }
+    });
+</code></pre><p>adapter中的部分代码：</p>
+<pre><code>/**
+ * 获取首字母首次出现位置
+ */
+public int getPositionForSection(String catalog) {
+    for (int i = 0; i &lt; getCount(); i++) {
+        String sortStr = list.get(i).firstLetter;
+        if (catalog.equalsIgnoreCase(sortStr)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+//如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
+    if(position == getPositionForSection(catalog)){
+        viewHolder.catalog.setVisibility(View.VISIBLE);
+        viewHolder.catalog.setText(contact.firstLetter.toUpperCase());
+    }else{
+        viewHolder.catalog.setVisibility(View.GONE);
+    }
+</code></pre><!-- toc -->
+<h2 id="6、结语"><a href="#6、结语" class="headerlink" title="6、结语"></a>6、结语</h2><p>到这里基本上效果就实现了，是不是很简单，不过如果编译版本大于23的话，记得动态申请<strong>Manifest.permission.READ_CONTACTS</strong>权限，不然会Crash，别问我怎么知道的。。。。。。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/手机通讯录/" rel="tag"># 手机通讯录</a>
+          
+            <a href="/tags/字母A-Z排序/" rel="tag"># 字母A-Z排序</a>
+          
+            <a href="/tags/SideBar/" rel="tag"># SideBar</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/22/Android仿滴滴出行验证码输入框效果/" rel="next" title="Android仿滴滴出行验证码输入框效果">
+                <i class="fa fa-chevron-left"></i> Android仿滴滴出行验证码输入框效果
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/20/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+  <div class="post-spread">
+      
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://q1.qlogo.cn/g?b=qq&nk=493654134&s=5"
+               alt="hydCoder" />
+          <p class="site-author-name" itemprop="name">hydCoder</p>
+           
+              <p class="site-description motion-element" itemprop="description">以梦为马，明日天涯。。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hydcoder" target="_blank" title="GitHub">
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3180967953/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="Weibo">
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/c1a1f28fcb30" target="_blank" title="简书">
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、读取联系人"><span class="nav-text">2、读取联系人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、好友排序和字母索引"><span class="nav-text">3、好友排序和字母索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1、右侧字母索引的导航条–SideBar"><span class="nav-text">3.1、右侧字母索引的导航条–SideBar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2、汉字转拼音工具类"><span class="nav-text">3.2、汉字转拼音工具类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3、让联系人可以根据拼音来排序"><span class="nav-text">3.3、让联系人可以根据拼音来排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、与后台数据库进行匹配"><span class="nav-text">4、与后台数据库进行匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、组装"><span class="nav-text">5、组装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、结语"><span class="nav-text">6、结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hydCoder</span>
+
+  
+</div>
+
+<script type="text/x-mathjax-config">
+    var mathId = document.getElementById("gitalk-container");
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"]
+        }
+    });
+    if (mathId != null) {
+        window.onload = function() {
+            $(".gt-container").bind("DOMNodeInserted", function() {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub], document.getElementById("gitalk-container"));
+            })
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub], mathId);
+        }
+    }
+</script>
+<script src="<%- theme.CDN.mathjax %>?config=TeX-AMS-MML_HTMLorMML" async="async">
+</script>
+
+
+  
+
+  <span class="post-meta-divider">|</span>
+
+ 
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("PpscB5dw7J3tLgKwy3yTcHWl-gzGzoHsz", "K12YxewUjCObScSbGfcEr4xu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <html class="theme-next mist use-motion" lang="zh-Hans">
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

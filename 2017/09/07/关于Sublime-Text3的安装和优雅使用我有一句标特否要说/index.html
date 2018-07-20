@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sublime Text3,ST,Package Control," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hydcoder's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="说在前面古人云：“工欲善其事，必先利其器。”，所以要想更好的装逼，呸呸呸，是更好的撸码，那就必须得有一款看起来很高大上，使用起来很爽，又很轻量级的编辑器了。在不同语言的开发环境下可能你都会有很喜欢的编辑器，但有时候你仅仅只是想写点什么或者看下别人写的东西，又不想打开你那沉重的IDE，那么你就可以选择一些轻量级的编辑器了，下面说说我知道的几款吧。  notepad++： windows下的一款比较">
+<meta name="keywords" content="Sublime Text3,ST,Package Control">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Sublime Text3的安装和优雅使用我有一句标特否要说">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/关于Sublime-Text3的安装和优雅使用我有一句标特否要说/index.html">
+<meta property="og:site_name" content="hydcoder&#39;s blog">
+<meta property="og:description" content="说在前面古人云：“工欲善其事，必先利其器。”，所以要想更好的装逼，呸呸呸，是更好的撸码，那就必须得有一款看起来很高大上，使用起来很爽，又很轻量级的编辑器了。在不同语言的开发环境下可能你都会有很喜欢的编辑器，但有时候你仅仅只是想写点什么或者看下别人写的东西，又不想打开你那沉重的IDE，那么你就可以选择一些轻量级的编辑器了，下面说说我知道的几款吧。  notepad++： windows下的一款比较">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/PF7H4lg.png">
+<meta property="og:image" content="https://i.imgur.com/568cg3N.png">
+<meta property="og:image" content="https://i.imgur.com/hh2jaRF.gif">
+<meta property="og:image" content="http://i.imgur.com/Q6VqJel.gif">
+<meta property="og:updated_time" content="2017-09-07T03:54:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Sublime Text3的安装和优雅使用我有一句标特否要说">
+<meta name="twitter:description" content="说在前面古人云：“工欲善其事，必先利其器。”，所以要想更好的装逼，呸呸呸，是更好的撸码，那就必须得有一款看起来很高大上，使用起来很爽，又很轻量级的编辑器了。在不同语言的开发环境下可能你都会有很喜欢的编辑器，但有时候你仅仅只是想写点什么或者看下别人写的东西，又不想打开你那沉重的IDE，那么你就可以选择一些轻量级的编辑器了，下面说说我知道的几款吧。  notepad++： windows下的一款比较">
+<meta name="twitter:image" content="https://i.imgur.com/PF7H4lg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'SL4D52I9T2',
+      apiKey: '0badc1227cda130fdb8d0651226997cb',
+      indexName: 'hydcoder',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与 「${query}」 相关的内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/关于Sublime-Text3的安装和优雅使用我有一句标特否要说/"/>
+
+
+
+
+
+  <title>关于Sublime Text3的安装和优雅使用我有一句标特否要说 | hydcoder's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hydcoder's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱好游戏和摄影的码农</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <!-- 添加  theme.algolia_search.enable -->
+  
+
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/ || tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+
+
+  
+    <li class="menu-item menu-item-search">
+      
+        <a href="javascript:;" class="popup-trigger">
+
+<!-- 添加 开始 -->
+
+
+      
+        
+        搜索
+      </a>
+    </li>
+  
+</ul>
+
+  
+
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/关于Sublime-Text3的安装和优雅使用我有一句标特否要说/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hydCoder">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=493654134&s=5">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hydcoder's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于Sublime Text3的安装和优雅使用我有一句标特否要说</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T10:36:04+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/other/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/07/关于Sublime-Text3的安装和优雅使用我有一句标特否要说/" class="leancloud_visitors" data-flag-title="关于Sublime Text3的安装和优雅使用我有一句标特否要说">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc -->
+<h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><p>古人云：“工欲善其事，必先利其器。”，所以要想更好的装逼，呸呸呸，是更好的撸码，那就必须得有一款看起来很高大上，使用起来很爽，又很轻量级的编辑器了。在不同语言的开发环境下可能你都会有很喜欢的编辑器，但有时候你仅仅只是想写点什么或者看下别人写的东西，又不想打开你那沉重的IDE，那么你就可以选择一些轻量级的编辑器了，下面说说我知道的几款吧。</p>
+<ul>
+<li><strong>notepad++</strong>： windows下的一款比较好用的文本编辑器（至少比系统的记事本好用）</li>
+<li><strong>vim(或者vi)</strong>：这款号称叫编辑器之神的编辑器，确实好用，有几种模式和一大堆的快捷键，有点记不住，而且在Linux操作系统下用的较多(windows的git bash里也有)</li>
+<li><strong>Sublime Text(简称ST)</strong>：这就是今天的主角了，他强大的插件和用法比起上面两款应该是更受青睐，下面就详细说说它的安装和一些插件安装以及快捷键(请准备好凳子。。。)</li>
+</ul>
+<!-- toc -->
+<h2 id="安装Sublime-Text-3"><a href="#安装Sublime-Text-3" class="headerlink" title="安装Sublime Text 3"></a>安装Sublime Text 3</h2><p>首先直接去它的<a href="http://www.sublimetext.com/3" target="_blank" rel="noopener">官网</a>　根据自己的系统版本下载相应的安装包，但是一定要选择ST3，而不是ST2，3比2好用，真的，后面你就知道了。</p>
+<p>安装好后，打开后是不是发现最顶部有一个括号，里面写的<strong>未注册</strong>的英文，有强迫症的朋友估计受不了了，那么就来激活它吧。(当然，手头宽裕的还是请支持正版！)</p>
+<p>点开Help，填入注册码即可去掉那个括号了。下面是亲测可用的注册码。</p>
+<blockquote>
+<p>—– BEGIN LICENSE —–<br>Michael Barnes<br>Single User License<br>EA7E-821385<br>8A353C41 872A0D5C DF9B2950 AFF6F667<br>C458EA6D 8EA3C286 98D1D650 131A97AB<br>AA919AEC EF20E143 B361B1E7 4C8B7F04<br>B085E65E 2F5F5360 8489D422 FB8FC1AA<br>93F6323C FD7F7544 3F39C318 D95E6480<br>FCCC7561 8A4A1741 68FA4223 ADCEDE07<br>200C25BE DBBC4855 C4CFB774 C5EC138C<br>0FEC1CEF D9DCECEC D3A5DAD1 01316C36<br>—— END LICENSE ——</p>
+<p>—– BEGIN LICENSE —–<br>Nicolas Hennion<br>Single User License<br>EA7E-866075<br>8A01AA83 1D668D24 4484AEBC 3B04512C<br>827B0DE5 69E9B07A A39ACCC0 F95F5410<br>729D5639 4C37CECB B2522FB3 8D37FDC1<br>72899363 BBA441AC A5F47F08 6CD3B3FE<br>CEFB3783 B2E1BA96 71AAF7B4 AFB61B1D<br>0CC513E7 52FF2333 9F726D2C CDE53B4A<br>810C0D4F E1F419A3 CDA0832B 8440565A<br>35BF00F6 4CA9F869 ED10E245 469C233E<br>—— END LICENSE ——</p>
+</blockquote>
+<blockquote>
+<p>—– BEGIN LICENSE —–<br>Anthony Sansone<br>Single User License<br>EA7E-878563<br>28B9A648 42B99D8A F2E3E9E0 16DE076E<br>E218B3DC F3606379 C33C1526 E8B58964<br>B2CB3F63 BDF901BE D31424D2 082891B5<br>F7058694 55FA46D8 EFC11878 0868F093<br>B17CAFE7 63A78881 86B78E38 0F146238<br>BAE22DBB D4EC71A1 0EC2E701 C7F9C648<br>5CF29CA3 1CB14285 19A46991 E9A98676<br>14FD4777 2D8A0AB6 A444EE0D CA009B54<br>—— END LICENSE ——</p>
+</blockquote>
+<blockquote>
+<p>—– BEGIN LICENSE —–<br>Alexey Plutalov<br>Single User License<br>EA7E-860776<br>3DC19CC1 134CDF23 504DC871 2DE5CE55<br>585DC8A6 253BB0D9 637C87A2 D8D0BA85<br>AAE574AD BA7D6DA9 2B9773F2 324C5DEF<br>17830A4E FBCF9D1D 182406E9 F883EA87<br>E585BBA1 2538C270 E2E857C2 194283CA<br>7234FF9E D0392F93 1D16E021 F1914917<br>63909E12 203C0169 3F08FFC8 86D06EA8<br>73DDAEF0 AC559F30 A6A67947 B60104C6<br>—— END LICENSE ——</p>
+</blockquote>
+<blockquote>
+<p>这些注册码来自<a href="https://fatesinger.com/77763" target="_blank" rel="noopener">Sublime text 3 3103 注册码</a>，感谢提供注册码的作者。</p>
+</blockquote>
+<!-- toc -->
+<h2 id="Package-Control安装"><a href="#Package-Control安装" class="headerlink" title="Package Control安装"></a>Package Control安装</h2><p>Package Control是一个基础的、必备的包管理，主要用来以后的插件安装。<a href="https://sublime.wbond.net/installation" target="_blank" rel="noopener">官网的安装指导</a>。</p>
+<p><img src="https://i.imgur.com/PF7H4lg.png" alt=""></p>
+<p>打开ST3，点击菜单 View -&gt; Show Console，会在底部出现一个命令输入框，然后将上面的命令拷贝(<a href="https://sublime.wbond.net/installation" target="_blank" rel="noopener">官网的安装指导</a>打开这个网址拷贝)到输入框中，回车，等待，安装成功。</p>
+<!-- toc -->
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><ul>
+<li>插件安装方式一：直接安装</li>
+</ul>
+<blockquote>
+<p>安装Sublime text 3插件很方便，可以直接下载安装包解压缩到Packages目录（菜单-&gt;preferences-&gt;packages）。</p>
+</blockquote>
+<ul>
+<li><p>插件安装方式二：使用Package Control组件安装：</p>
+<p>  经过上面安装了Package Control后，我们就可以通过快捷键 Ctrl+Shift+P (或者点击preferences -&gt; Package Control)打开Package Control来安装插件了。在打开的输入框中输入 install ，会根据你的输入自动提示，选择 Install Package。如下图：</p>
+<p>  <img src="https://i.imgur.com/568cg3N.png" alt=""></p>
+<p>  我们输入<strong>chinese</strong>，选择ChineseLocalization安装一个语言包，安装好后菜单上的文字就会自动变成简体中文了。</p>
+</li>
+</ul>
+<!-- toc -->
+<h2 id="ST安装与MarkDown有关的插件"><a href="#ST安装与MarkDown有关的插件" class="headerlink" title="ST安装与MarkDown有关的插件"></a>ST安装与MarkDown有关的插件</h2><blockquote>
+<p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字 还可以颜色变换 等等。</p>
+</blockquote>
+<ul>
+<li><p>MarkDown Editing</p>
+<p>  SublimeText不仅仅是能够查看和编辑 Markdown 文件，但它会视它们为格式很糟糕的纯文本。这个插件通过适当的颜色高亮和其它功能来更好地完成这些任务。</p>
+</li>
+<li><p>MarkDown Preview</p>
+<ol>
+<li>使用<br> Markdown Preview较常用的功能是preview in browser和Export HTML in Sublime Text，前者可以在浏览器看到预览效果，后者可将markdown保存为html文件。<br> preview inbrowser据称是实时的，但是实践上还是需要在st保存，然后浏览器刷新才能看到新的效果，<br> 好在markdown写得多的话也不需要每敲一行看一次效果。</li>
+<li>编辑<br> 按Ctrl + N 新建一个文档<br> 使用Markdown语法编辑文档<br> 按Ctrl + Shift + P<br> 语法高亮，输入ssm 后回车(Set Syntax: Markdown)</li>
+<li>在浏览器预览Markdown文档<br> 按Ctrl + Shift + P<br> 输入mp 后回车(Markdown Preview: current file in browser)<br> 此时就可以在浏览器里看到刚才编辑的文档了;<br> 若设置了快捷键,直接(alt+m/..)即可.</li>
+<li>快捷键<br> st支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。<br> 方法是在Preferences -&gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：<br> <strong>{ “keys”: [“alt+m”], “command”: “markdown_preview”, “args”: { “target”: “browser”} }</strong><br> “alt+m”可设置为您自己喜欢的按键。<blockquote>
+<p>注意：添加快捷键的语法类似Json，所以，如果在你添加的[]里已经有这样的代码了，记得在末尾加上英文输入法下的逗号即’，’。</p>
+</blockquote>
+</li>
+<li>打印成pdf<br> 将markdown转换为pdf应该有很多种方法的。可直接用谷歌浏览器虚拟打印功能生成。<br> 利用Markdown Preview的Preview in Browser功能可以在浏览器上看到html效果。在页面右键-&gt;打印-&gt;另存为pdf-&gt;调节页边距即可将pdf文件下载下来。</li>
+</ol>
+</li>
+</ul>
+<!-- toc -->
+<h2 id="Sublime-Text-3其他插件推荐"><a href="#Sublime-Text-3其他插件推荐" class="headerlink" title="Sublime Text 3其他插件推荐"></a>Sublime Text 3其他插件推荐</h2><ul>
+<li><p><strong>Sublime Terminal</strong>：这个插件可以让你在Sublime中直接使用终端打开你的项目文件夹，并支持使用快捷键。</p>
+</li>
+<li><p><strong>ColorPicker</strong>：通常，如果你想使用一个颜色选择器则可能打开 Photoshop。而在 Sublime Text 中，你可以使用内置的颜色选择器。安装完成后，只要按下Ctrl / Cmd + Shift + C 快捷键。</p>
+</li>
+<li><p><strong>SublimeREPL</strong>：这可能是对程序员很有用的插件。SublimeREPL 允许你在 Sublime Text 中运行各种语言（NodeJS ， Python，Ruby， Scala 和 Haskell 等等）。</p>
+</li>
+<li><p><strong>Ctags插件</strong>：Sublime Text不能支持函数的跳转（比如像Eclipse那样，按住Control点击该方法或者对象，即可跳转到定义的地方； Alt+←即可回到原处）。其实Sublime Text也可以借助插件实现之（当然，有些情况下:Can not find defination）毕竟这个也是借助正则来匹配完成的。</p>
+</li>
+<li><p><strong>SublimeLinter插件</strong>：SublimeLinter 是前端编码利器——Sublime Text 的一款插件，用于高亮提示用户编写的代码中存在的不规范和错误的写法，支持 JavaScript、CSS、HTML、Java、PHP、Python、Ruby 等十多种开发语言。这篇文章介绍如何在 Windows 中配置 SublimeLinter 进行 JS &amp; CSS 校验。</p>
+</li>
+<li><p><strong>SideBarEnhancements插件</strong>：SideBarEnhancements是一款很实用的右键菜单增强插件；在安装该插件前，在Sublime Text左侧FOLDERS栏中点击右键，只有寥寥几个简单的功能；安装了就相当于给其丰了大胸一般。 更强大的是，该插件还能让我们自定义快捷键呼出某个浏览器以预览页面！这样就不用到项目目录下寻找和拖动到特定浏览器中预览了。<br>安装此插件后，点击菜单栏的<strong>preferences-&gt;package setting-&gt;side bar-&gt;Key Building-User</strong>，键入以下代码：</p>
+<pre><code>[   
+{ &quot;keys&quot;: [&quot;ctrl+shift+c&quot;], &quot;command&quot;: &quot;copy_path&quot; },
+//chrome
+{ &quot;keys&quot;: [&quot;f2&quot;], &quot;command&quot;: &quot;side_bar_files_open_with&quot;,
+        &quot;args&quot;: {
+            &quot;paths&quot;: [],
+            &quot;application&quot;: &quot;C:\\Users\\hydcoder\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;,
+            &quot;extensions&quot;:&quot;.*&quot;
+        }
+ }
+]
+</code></pre><blockquote>
+<p>这里设置按Ctrl+Shift+C复制文件路径，按F2即可在Chrome浏览器预览效果(如果需要的话，也可以根据自己的需要为Firefox，Safari，IE，Opera等加上)，当然你也可以自己定义喜欢的快捷键，application后面的路径需要换成自己的chrome安装路径。</p>
+</blockquote>
+</li>
+<li><p><strong>SublimeTmpl 快速生成文件模板</strong>：sublime text 3没有新建文件模板的功能，像html头部的DTD声明每次都要复制粘贴。用SublimeTmpl这款插件终于可以解脱了，SublimeTmpl能新建html、css、javascript、php、python、ruby六种类型的文件模板，所有的文件模板都在插件目录的templates文件夹里，可以自定义编辑文件模板。<br>SublimeTmpl默认的快捷键:</p>
+<pre><code>ctrl+alt+h html
+ctrl+alt+j javascript
+ctrl+alt+c css
+ctrl+alt+p php
+ctrl+alt+r ruby
+ctrl+alt+shift+p python
+</code></pre></li>
+</ul>
+<blockquote>
+<p>如果想要新建其他类型的文件模板的话，先自定义文件模板方在templates文件夹里，再分别打开Default (Windows).sublime-keymap、Default.sublime-commands、Main.sublime-menu、SublimeTmpl.sublime-settings这四个文件照着里面的格式自定义想要新建的类型。</p>
+</blockquote>
+<ul>
+<li><p>Javascript-API-Completions:支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性提示的插件，是少数支持sublime text 3的后缀提示的插件，HTML5标签提示sublime text3自带，不过JQuery提示还是很有用处的，也可设置要提示的语言。</p>
+</li>
+<li><p>Doc​Blockr: 代码块注释。可以快速的对函数进行注释。保持代码规范。支持多种语言,有 JavaScript (including ES6), PHP, ActionScript, Haxe, CoffeeScript, TypeScript, Java, Apex, Groovy, Objective C, C, C++ and Rust.</p>
+<ol>
+<li>/*:回车创建一个代码块注释</li>
+<li><p>/**:回车在自动查找函数中的形参等等。</p>
+<p>它会生成 JSDoc 格式的注释。如果你从没有使用过类似的工具，DocBlockr 会让你觉得以前没有它是如何写代码的。帮助你创造你的代码注释，通过解析功能，参数，变量，并且自动添加基本项目；如果你愿意其更为便捷，不妨再结合AutoHotKey,高效注释，由此开启。</p>
+</li>
+</ol>
+</li>
+<li><p><strong>ConvertToUTF8</strong>： 支持 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码的插件</p>
+</li>
+<li><p><strong>Bracket Highlighter</strong>： 用于匹配括号，引号和html标签。对于很长的代码很有用。安装好之后，不需要设置插件会自动生效</p>
+</li>
+<li><p><strong>Emmet</strong>：快速生成HTML代码段的插件，强大到无与伦比:可以超快速编写HTML/CSS/JS，当然这个插件还支持多种编译环境，如常见的：Eclipse/Aptana、Coda、Notepad++、Adobe Dreamweaver、TextMate等，web开发必备！！！</p>
+</li>
+<li><p><strong>jsFormat </strong>：格式化js代码，强迫症Coder必备！默认快捷键Ctrl+Alt+F。</p>
+</li>
+<li><p><strong>ClickableURLs</strong>：可点击的URL，使用小插件ClickableURLs可以让文件中的URL能够点击。</p>
+</li>
+<li><p><strong>终极必杀</strong>：自己编写专用的Sublime Text插件。虽然说各个方面比如移动端，Web前段，服务器端，非Coder的Writer所需要的方便已经被集成在了不同的插件中。但譬如，需要快捷打开PC端的某个模拟器，便捷的进行某些校验，只要你想的到的基本都可以将其在插件内，以快捷键处理之。至于如何编写SublimeText插件，请参看这里 <a href="http://www.360doc.com/content/15/0417/22/19342630_463999403.shtml" target="_blank" rel="noopener">编写自己的Sublime Text2 插件</a>。</p>
+</li>
+</ul>
+<!-- toc -->
+<h2 id="设置属于自己的快捷键"><a href="#设置属于自己的快捷键" class="headerlink" title="设置属于自己的快捷键"></a>设置属于自己的快捷键</h2><ul>
+<li><p>使用SublimeText内置的快捷键：比如 <strong>Ctrl +  Shift + P</strong> 打开命令面板:例如打开Package Control安装各种插件；可以可以输入Set(Snytax)来改变使用的语言环境，瞬间切换等等。</p>
+</li>
+<li><p>设置快捷键。在SublimeText里，打开Preferences -&gt; Key Bindings - User，比如：</p>
+<pre><code>[
+  { &quot;keys&quot;: [&quot;ctrl+f9&quot;], &quot;command&quot;: &quot;build&quot; },
+  { &quot;keys&quot;: [&quot;f10&quot;], &quot;command&quot;: &quot;build&quot;, &quot;args&quot;: {&quot;variant&quot;: &quot;Run&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+x&quot;], &quot;command&quot;: &quot;toggle_comment&quot;, &quot;args&quot;: { &quot;block&quot;: true } }
+   ]
+</code></pre></li>
+</ul>
+<p>具体可参见<a href="http://blog.csdn.net/moyan_min/article/details/11530751" target="_blank" rel="noopener">Sublime Text3 快捷键汇总及设置快捷键配置环境变量</a></p>
+<!-- toc -->
+<h2 id="硬货-实用技巧"><a href="#硬货-实用技巧" class="headerlink" title="硬货(实用技巧)"></a>硬货(实用技巧)</h2><ul>
+<li>Ctrl+O(Command+O)：可以实现头文件和源文件之间的快速切换</li>
+<li>通过 View -&gt; Side bar 可在左侧显示当前打开的文件列表</li>
+<li>ST3虽然不像notepad++可以在sidebar上显示函数列表，但是可通过Ctrl+R查看</li>
+<li>通过 Preference -&gt; Key binding user 可根据个人操作习惯自定义快捷键（包括ST3自带的和插件的）</li>
+<li>双击可选中光标所在单词，三击可选中光标所在行(等同于Ctrl＋L(Command+L));</li>
+<li>Ctrl+Shift+T可以打开之前关闭的tab页，这点同chrome是一样的Ctrl+R定位函数；Ctrl+G定位到行；</li>
+<li>有时我们需要对一片区域的所有行进行同时编辑，Ctrl+Shift+L可以将当前选中区域打散，然后进行同时编辑：</li>
+</ul>
+<p><img src="https://i.imgur.com/hh2jaRF.gif" alt=""></p>
+<ul>
+<li>有打散自然就有合并，Ctrl + J(mac下Command＋J)可以把当前选中区域合并为一行</li>
+<li>Windows下Ctrl + ←/→进行逐词移动，相应的，Ctrl + Shift + ←/→进行逐词选择。</li>
+<li>Sublime text 删除插件步骤：“Ctrl+Shift+P”—“Remove Package”—“找到需要删除的插件，并点击即可删除”;</li>
+<li>编辑代码时我们经常会开多个窗口，所以分屏很重要。Windows下：Alt + Shift + 2进行左右分屏，Alt + Shift + 8进行上下分屏，Alt + Shift + 5进行上下左右分屏（即分为四屏）</li>
+<li><p>Sublime 拼写检查：使用SublimeText从事英文创作，那么启用拼写检查就非常有用处了。选择<strong>Preferences &gt; Settings – User</strong>菜单，添加以下代码：</p>
+<pre><code>&quot;spell_check&quot;: true,
+</code></pre></li>
+</ul>
+<!-- toc -->
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>由于Sublime Text很强大，所以我所知道的和这篇文章所说的也只不过是沧海一粟，冰山一角，只希望能帮到有需要的人。也给自己的使用做一个笔记和总结。</p>
+<blockquote>
+<p>参考文章出处：</p>
+</blockquote>
+<blockquote>
+<p><a href="http://www.jianshu.com/p/3cb5c6f2421c/" target="_blank" rel="noopener">如何优雅地使用Sublime Text3</a><br><a href="http://www.cnblogs.com/bugs/p/3533216.html" target="_blank" rel="noopener">Sublime Text 3能用支持的插件推荐</a><br><a href="http://www.jianshu.com/p/5905f927d01b" target="_blank" rel="noopener">Sublime Text3插件：增强篇</a><br><a href="http://www.open-open.com/news/view/26d731" target="_blank" rel="noopener">20个强大的SublimeText插件</a></p>
+</blockquote>
+<p><img src="http://i.imgur.com/Q6VqJel.gif" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sublime-Text3/" rel="tag"># Sublime Text3</a>
+          
+            <a href="/tags/ST/" rel="tag"># ST</a>
+          
+            <a href="/tags/Package-Control/" rel="tag"># Package Control</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/01/INSTALL-FAILED-NO-MATCHING-ABIS错误解决/" rel="next" title="INSTALL_FAILED_NO_MATCHING_ABIS错误解决">
+                <i class="fa fa-chevron-left"></i> INSTALL_FAILED_NO_MATCHING_ABIS错误解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/22/Android仿滴滴出行验证码输入框效果/" rel="prev" title="Android仿滴滴出行验证码输入框效果">
+                Android仿滴滴出行验证码输入框效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+  <div class="post-spread">
+      
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://q1.qlogo.cn/g?b=qq&nk=493654134&s=5"
+               alt="hydCoder" />
+          <p class="site-author-name" itemprop="name">hydCoder</p>
+           
+              <p class="site-description motion-element" itemprop="description">以梦为马，明日天涯。。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hydcoder" target="_blank" title="GitHub">
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3180967953/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="Weibo">
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/c1a1f28fcb30" target="_blank" title="简书">
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说在前面"><span class="nav-text">说在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Sublime-Text-3"><span class="nav-text">安装Sublime Text 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-Control安装"><span class="nav-text">Package Control安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件安装"><span class="nav-text">插件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ST安装与MarkDown有关的插件"><span class="nav-text">ST安装与MarkDown有关的插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sublime-Text-3其他插件推荐"><span class="nav-text">Sublime Text 3其他插件推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置属于自己的快捷键"><span class="nav-text">设置属于自己的快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬货-实用技巧"><span class="nav-text">硬货(实用技巧)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hydCoder</span>
+
+  
+</div>
+
+<script type="text/x-mathjax-config">
+    var mathId = document.getElementById("gitalk-container");
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"]
+        }
+    });
+    if (mathId != null) {
+        window.onload = function() {
+            $(".gt-container").bind("DOMNodeInserted", function() {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub], document.getElementById("gitalk-container"));
+            })
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub], mathId);
+        }
+    }
+</script>
+<script src="<%- theme.CDN.mathjax %>?config=TeX-AMS-MML_HTMLorMML" async="async">
+</script>
+
+
+  
+
+  <span class="post-meta-divider">|</span>
+
+ 
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("PpscB5dw7J3tLgKwy3yTcHWl-gzGzoHsz", "K12YxewUjCObScSbGfcEr4xu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <html class="theme-next mist use-motion" lang="zh-Hans">
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>
